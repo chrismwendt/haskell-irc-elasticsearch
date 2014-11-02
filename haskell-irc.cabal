@@ -1,0 +1,40 @@
+name:                haskell-irc
+version:             0.1.0.0
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+
+executable indexer
+  main-is:             Indexer.hs
+  ghc-options:         -eventlog -threaded
+  default-language:    Haskell2010
+  build-depends:       base
+                     , directory
+                     , filepath
+                     , time
+                     , bytestring
+                     , attoparsec
+                     , text
+                     , conduit
+                     , conduit-extra
+                     , resourcet
+                     , aeson
+                     , iso8601-time
+                     , conduit-combinators
+                     , system-filepath
+                     , bloodhound
+                     , wreq
+                     , transformers
+                     , http-client
+                     , lens
+                     , aeson-pretty
+                     , SHA
+                     , mono-traversable
+                     , chunked-data
+                     , lens-aeson
+                     , vector
+                     , retry
+                     , exceptions
+                     , unix-compat
+                     , stm-conduit
+                     , async
