@@ -43,9 +43,9 @@ main = runResourceT (buffer bufferSize producer consumer)
             sourceDirectory archive
         =$= awaitForever fileLines
         =$= C.concatMap (either (const []) (: []) . uncurry (makeDoc tzOffset))
-        =$= C.map (uncurry (BulkCreate index docType))
     consumer =
-            conduitVector bulkSize
+            C.map (uncurry (BulkCreate index docType))
+        =$= (conduitVector bulkSize :: C.Conduit a (ResourceT IO) (V.Vector a))
         =$= C.mapM_ (lift . void . httpWithRetry . bulk server . V.toList)
     archive    = "archive"
     index      = IndexName   "freenode-haskell2"
